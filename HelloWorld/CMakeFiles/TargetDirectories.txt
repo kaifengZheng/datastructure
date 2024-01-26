@@ -1,0 +1,3 @@
+/home/kaifeng/repos/datastructure/HelloWorld/CMakeFiles/Helloworld.dir
+/home/kaifeng/repos/datastructure/HelloWorld/CMakeFiles/edit_cache.dir
+/home/kaifeng/repos/datastructure/HelloWorld/CMakeFiles/rebuild_cache.dir
