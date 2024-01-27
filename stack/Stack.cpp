@@ -5,6 +5,7 @@ const int MAX_SIZE = 10;
 class Stack {
   int top;
   std::vector<int> stack;
+  int capacity;
 
 public:
   Stack();
@@ -15,36 +16,38 @@ public:
   void pop();
   void size();
   // initialize stack with specific size
-  void init(const int n) { stack.resize(n); }
+  void init(const int n) {
+    capacity = n;
+    stack.resize(capacity);
+  }
 };
 Stack::Stack() { top = 0; }
 bool Stack::isEmpty() { return (top == 0); }
 
-bool Stack::isFull() { return (top == MAX_SIZE); }
+bool Stack::isFull() { return (top == capacity); }
 
 void Stack::display() {
-  int i;
-  for (i = 0; i < top; i++) {
+  for (int i = 0; i < top; i++) {
     std::cout << stack[i] << " ";
   }
   std::cout << std::endl;
 }
 
 void Stack::push(int value) {
-  if (Stack::isFull() != 0) {
+  if (Stack::isFull()) {
     std::cout << "The stack is overflow!" << std::endl;
-  } else {
-    stack[top] = value;
-    top++;
+    return;
   }
+  stack[top] = value;
+  top++;
 }
 
 void Stack::pop() {
-  if (Stack::isEmpty() != 0) {
+  if (Stack::isEmpty()) {
     std::cout << "The stack is empty!" << std::endl;
-  } else {
-    top--;
+    return;
   }
+  top--;
 }
 void Stack::size() {
   std::cout << "The size of the stack is " << top << '.' << std::endl;
@@ -72,7 +75,7 @@ int main() {
     }
     if (operation == 0) {
       std::cout << "exit...";
-      break;
+      return 0;
     }
 
     // test if the stack is empty
@@ -81,7 +84,7 @@ int main() {
     }
     // test if the stack is full
     if (s.isFull() != 0) {
-      std::cout << "The stack is full.<<std::endl";
+      std::cout << "The stack is full." << std::endl;
     }
   }
   return 0;
